@@ -98,13 +98,13 @@
 /* ADJUST
  * -------------------------------------------------------------------------------------------------------------------------------------
  * |       | QWERTY|       |       |       |       |-----------------------------------|       |Prt Scr|       | EP_OFF| EP_ON |       |
- * |       | BT 0  | BT 1  | BT 2  | BT 3  | BT 4  |-----------------------------------|       |       |       |       |       |       |
+ * |       | BT 0  | BT 1  | BT 2  | BT 3  | BT 4  |-----------------------------------| STUDIO|       |       |       |       |       |
  * | BOOTL | RESET | NONE  |OUT_USB|OUT_BLE| NONE  |BT CLR |-------------------| NONE  | NONE  | NONE  | NONE  | NONE  | NONE  | TRNS  |
  * | NONE  | NONE  | TRNS  |-------| TRNS  | TRNS  | TRNS  | TRNS  |---| TRNS  | TRNS  | TRNS  | TRNS  |-------| RCTRL | NONE  | NONE  |
  */
                         bindings = <
 &none         &to  QWERTY_L &none         &none         &none         &none                                                                             &none             &kp PRINTSCREEN    &none         &ext_power EP_OFF  &ext_power EP_ON &none
-&none         &bt  BT_SEL 0 &bt  BT_SEL 1 &bt  BT_SEL 2 &bt  BT_SEL 3 &bt  BT_SEL 4                                                                     &none             &none              &none            &none           &none            &none
+&none         &bt  BT_SEL 0 &bt  BT_SEL 1 &bt  BT_SEL 2 &bt  BT_SEL 3 &bt  BT_SEL 4                                                                     &studio_unlock    &none              &none            &none           &none            &none
 &bootloader   &sys_reset    &none         &out OUT_USB  &out OUT_BLE  &none         &bt BT_CLR                                         &none            &none             &none              &none            &none           &none            &trans
 &tog  NAV_L   &tog  SYM_L   &trans                      &trans        &trans        &trans        &trans                 &trans        &trans           &trans            &trans                              &kp  RCTRL      &none            &none
                         >;
