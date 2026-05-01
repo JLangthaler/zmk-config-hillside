@@ -5,9 +5,7 @@ manifest:
   projects:
     - name: zmk
       remote: zmkfirmware
-      # Pinned to last ZMK release before Zephyr 4.1 / Hardware Model v2.
-      # The Hillside shield definitions in this repo are not yet HWMv2-compatible.
-      revision: v0.3
+      revision: main
       import: app/west.yml
   self:
     path: config
