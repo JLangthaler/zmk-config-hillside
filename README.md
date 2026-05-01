@@ -51,3 +51,22 @@ While RGB is disabled, any RGB control keys
 The Hillside shield definition files should *not* need to be modified and are in ./boards/shields.
 
 More information about each keymap is in their readme files.
+
+## ZMK Studio (Hillside 52)
+
+Hillside 52 can be built with ZMK Studio support.
+
+- Build target for Studio is the **left/central** side only.
+- The left side uses the `studio-rpc-usb-uart` snippet with `CONFIG_ZMK_STUDIO=y`.
+- Right side and `settings_reset` stay as standard builds.
+
+If ZMK Studio asks to unlock the keyboard, use the `&studio_unlock` binding in the adjust layer.
+In the default Hillside 52 keymap in this repo, reach it by:
+
+- Holding the SYM momentary key (right thumb).
+- Holding the ADJ momentary key from the SYM layer (left inner thumb position).
+- Tapping the `H` position (right home-row inner key in the ADJ layer).
+
+Once Studio is in use, keymap edits are runtime-managed by Studio. If you later change
+the `.keymap` file directly, use the Studio "Restore Stock Settings" action to re-apply
+firmware-defined bindings.
