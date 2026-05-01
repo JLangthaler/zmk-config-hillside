@@ -64,14 +64,14 @@
  * -------------------------------------------------------------------------------------------------------------------------------------
  * | Copy  |   1   |   2   |   3   |   4   |   5   |-----------------------------------|   6   |   7   |   8   |   9   |   0   | TRNS  |
  * | Cut   |  GUI  |  Alt  | Ctrl  | Shift | Paste |-----------------------------------| PG UP |  Left |  Up   |  Down | Right | PG DN |
- * | TRNS  |  F1   |  F2   |  F3   |  F4   |  F5   |  Undo |-------------------| Redo  |  F6   |  F7   |  F8   |  F9   |  F10  | TRNS  |
+ * | TRNS  |  F1   |  F2   |  F3   |  F4   |  F5   |  F11  |-------------------| F12   |  F6   |  F7   |  F8   |  F9   |  F10  | TRNS  |
  * | F11   |  F12  | TRNS  |-------| TRNS  | TRNS  | TRNS  | TRNS  |---| ADJ_L | TRNS  | TRNS  | TRNS  |-------| RCTRL | HOME  | END   |
  */
                         bindings = <
 &kp  Copy     &kp  N1       &kp  N2       &kp  N3       &kp  N4       &kp  N5                                                                        &kp   N6      &kp  N7      &kp   N8      &kp   N9      &kp  N0       &trans
 &kp  Cut      &kp  LGUI     &kp  LALT     &kp  LCTRL    &kp  LSHFT    &kp  Paste                                                                     &kp   PG_UP   &kp  LEFT    &kp   UP      &kp   DOWN    &kp  RIGHT    &kp PG_DN
-&trans        &kp  F1       &kp  F2       &kp  F3       &kp  F4       &kp  F5       &kp Undo                                           &kp  Redo     &kp   F6      &kp  F7      &kp   F8      &kp   F9      &kp  F10      &trans
-&kp  F11      &kp  F12      &trans                      &trans        &trans        &trans        &trans                 &mo ADJ_L     &trans        &trans        &trans                     &kp  RCTRL    &kp  HOME     &kp  END
+&trans        &kp  F1       &kp  F2       &kp  F3       &kp  F4       &kp  F5       &kp F11                                            &kp  F12      &kp   F6      &kp  F7      &kp   F8      &kp   F9      &kp  F10      &trans
+&tog  NAV_L   &tog  SYM_L   &trans                      &trans        &trans        &trans        &trans                 &trans        &trans        &trans        &trans                     &kp  RCTRL    &kp  HOME     &kp  END
                         >;
 			
                 };
@@ -88,7 +88,7 @@
 &kp  INS      &kp  LS(N1)   &kp  RA(Q)    &kp  RA(N3)   &kp  LS(N4)   &kp  LS(N5)                                                                    &kp  GRAVE    &kp  LS(N6)   &kp  LS(RBKT) &kp  LS(N8)   &kp  LS(N9)   &kp  DEL
 &caps_word    &kp  RA(MINUS)&kp  SLASH    &kp  LS(N0)   &kp  RA(N8)   &kp  RA(N9)                                                                    &kp C_VOL_UP  &kp  RSHFT    &kp  RCTRL    &kp  LALT     &kp  RGUI     &trans
 &trans        &kp  LS(RA(MINUS)) &kp  LS(SLASH)&kp  RBKT     &kp  RA(N7)   &kp  RA(N0)   &kp  C_PP                                          &kp C_MUTE    &kp C_VOL_DN  &kp  N0       &kp  N1       &kp  N2       &none         &trans
-&none         &none         &trans                      &trans        &trans        &trans        &mo  ADJ_L               &trans      &trans        &trans        &trans                      &kp  RCTRL    &kp  K_APP    &sk  RALT
+&tog  NAV_L   &tog  SYM_L        &trans                      &trans        &trans        &trans        &mo  ADJ_L               &trans      &trans        &trans        &trans                      &kp  RCTRL    &kp  K_APP    &sk  RALT
                         >;
 			
                 };
@@ -106,7 +106,7 @@
 &none         &to  QWERTY_L &none         &none         &none         &none                                                                             &none             &kp PRINTSCREEN    &none         &ext_power EP_OFF  &ext_power EP_ON &none
 &none         &bt  BT_SEL 0 &bt  BT_SEL 1 &bt  BT_SEL 2 &bt  BT_SEL 3 &bt  BT_SEL 4                                                                     &none             &none              &none            &none           &none            &none
 &bootloader   &sys_reset    &none         &out OUT_USB  &out OUT_BLE  &none         &bt BT_CLR                                         &none            &none             &none              &none            &none           &none            &trans
-&none         &none         &trans                      &trans        &trans        &trans        &trans                 &trans        &trans           &trans            &trans                              &kp  RCTRL      &none            &none
+&tog  NAV_L   &tog  SYM_L   &trans                      &trans        &trans        &trans        &trans                 &trans        &trans           &trans            &trans                              &kp  RCTRL      &none            &none
                         >;
 			
                 };
