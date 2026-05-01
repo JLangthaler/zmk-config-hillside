@@ -23,22 +23,38 @@
 
 
 / {
+        behaviors {
+                td_nav: td_nav {
+                        compatible = "zmk,behavior-tap-dance";
+                        #binding-cells = <0>;
+                        tapping-term-ms = <220>;
+                        bindings = <&mo NAV_L>, <&tog NAV_L>;
+                };
+
+                td_sym: td_sym {
+                        compatible = "zmk,behavior-tap-dance";
+                        #binding-cells = <0>;
+                        tapping-term-ms = <220>;
+                        bindings = <&mo SYM_L>, <&tog SYM_L>;
+                };
+        };
+
         keymap {
                 compatible = "zmk,keymap";
 
                 default_layer {
 /* QWERTY
  * -------------------------------------------------------------------------------------------------------------------------------------
- * | ESC   |   Q   |   W   |   E   |   R   |   T   |-----------------------------------|   Y   |   U   |   I   |   O   |   P    |   UML  |
- * | TAB   |   A   |   S   |   D   |   F   |   G   |-----------------------------------|   H   |   J   |   K   |   L   |   UML  |   UML  |
+ * | ESC   |   Q   |   W   |   E   |   R   |   T   |-----------------------------------|   Y   |   U   |   I   |   O   |   P    |  LBKT  |
+ * | TAB   |   A   |   S   |   D   |   F   |   G   |-----------------------------------|   H   |   J   |   K   |   L   |  SEMI  |   SQT  |
  * | SHIFT |   Z   |   X   |   C   |   V   |   B   |   '   |-------------------|   /   |   N   |   M   |   ,   |   .   |  Up    | MINUS  |
- * | Mute  |  ESC  | CTRL  |-------|OPT+BSP|  ALT  |CMD SPACE|  CTRL BSPC  |---|  Sym  | SPACE |  ALT  |  GUI  |-------| Left   | Down   | Right |
+ * |NAV/TOG|SYM/TOG| CTRL  |-------|ALT+BSP|  ALT  |CMD SPACE|  CMD BSPC   |---| SYM_L | ENTER |  ALT  |  GUI  |-------| Left   | Down   | Right |
  */
                         bindings = <
 &kp  ESC      &kp  Q        &kp  W        &kp  E        &kp  R        &kp  T                                                                         &kp  Y        &kp  U        &kp  I        &kp  O        &kp  P        &kp  LBKT
 &kp  TAB      &kp  A        &kp  S        &kp  D        &kp  F        &kp  G                                                                         &kp  H        &kp  J        &kp  K        &kp  L        &kp  SEMI     &kp  SQT
 &kp  LSHFT    &kp  Z        &kp  X        &kp  C        &kp  V        &kp  B        &kp  SQT                                           &kp  SLASH    &kp  N        &kp  M        &kp  COMMA    &kp  DOT      &kp  UP       &kp  MINUS
-&mo  NAV_L    &mo SYM_L     &kp  LCTRL                  &kp  LA(BSPC) &kp  LALT     &mt  LGUI SPACE    &mt  LGUI BSPC    &mo  SYM_L    &kp  ENTER    &kp  LALT     &kp  RGUI                   &kp  LEFT     &kp  DOWN     &kp  RIGHT
+&td_nav       &td_sym       &kp  LCTRL                  &kp  LA(BSPC) &kp  LALT     &mt  LGUI SPACE    &mt  LGUI BSPC    &mo  SYM_L    &mt  LSHIFT ENTER  &kp  LALT     &kp  RGUI                   &kp  LEFT     &kp  DOWN     &kp  RIGHT
                         >;
 			
                 };
@@ -46,10 +62,10 @@
                 nav_layer {
 /* NAV
  * -------------------------------------------------------------------------------------------------------------------------------------
- * | Copy  |   1   |   2   |   3   |   4   |   5   |-----------------------------------|   6   |   7   |   8   |   9   |   0   | BSPC  |
+ * | Copy  |   1   |   2   |   3   |   4   |   5   |-----------------------------------|   6   |   7   |   8   |   9   |   0   | TRNS  |
  * | Cut   |  GUI  |  Alt  | Ctrl  | Shift | Paste |-----------------------------------| PG UP |  Left |  Up   |  Down | Right | PG DN |
- * | Shift |  F1   |  F2   |  F3   |  F4   |  F5   |  UnDo |-------------------| ReDo  |  F6   |  F7   |  F8   |  F9   |  F10  | Shift |
- * | F11   |  F12  |       |-------|       |       |       |       |---| ADJ_L |       |       |       |-------| CTRL  | HOME  |  END  |
+ * | TRNS  |  F1   |  F2   |  F3   |  F4   |  F5   |  Undo |-------------------| Redo  |  F6   |  F7   |  F8   |  F9   |  F10  | TRNS  |
+ * | F11   |  F12  | TRNS  |-------| TRNS  | TRNS  | TRNS  | TRNS  |---| ADJ_L | TRNS  | TRNS  | TRNS  |-------| RCTRL | HOME  | END   |
  */
                         bindings = <
 &kp  Copy     &kp  N1       &kp  N2       &kp  N3       &kp  N4       &kp  N5                                                                        &kp   N6      &kp  N7      &kp   N8      &kp   N9      &kp  N0       &trans
@@ -64,14 +80,14 @@
 /* SYM
  * -------------------------------------------------------------------------------------------------------------------------------------
  * | INS   |   !   |   @   |   #   |   $   |   %   |-----------------------------------|   ^   |   &   |   *   |   (   |   )   | DELETE|
- * | CAPS  |   \   |   -   |   =   |   [   |   ]   |-----------------------------------| Vol+  | Shift | Ctrl  | Alt   | Gui   | ENTER |
- * | Shift |   |   |   _   |   +   |   {   |   }   | Play  |-------------------| Mute  | Vol-  |  N0   |  N1   |  N2   |       | SHIFT |
- * |       |       |       |-------|       |       |       |  ADJ_L |---|      |       |       |       |-------| CTRL  | MENU  |SkAltGr|
+ * | CAPS  |   \   |   -   |   =   |   [   |   ]   |-----------------------------------| Vol+  | RShift| RCtrl | Alt   | RGui  | TRNS  |
+ * | TRNS  |   |   |   _   |   +   |   {   |   }   | Play  |-------------------| Mute  | Vol-  |  N0   |  N1   |  N2   | NONE  | TRNS  |
+ * | NONE  | NONE  | TRNS  |-------| TRNS  | TRNS  | TRNS  | ADJ_L  |---| TRNS | TRNS  | TRNS  | TRNS  |-------| RCTRL | MENU  | S-ALTG|
  */
                         bindings = <
-&kp  INS      &kp  EXCL     &kp  AT       &kp  HASH     &kp  DOLLAR   &kp  PERCENT                                                                   &kp  CARET    &kp  AMPS     &kp  ASTRK    &kp  LPAR     &kp  RPAR     &kp  DEL
-&caps_word    &kp  BSLH     &kp  MINUS    &kp  EQUAL    &kp  LBKT     &kp  RBKT                                                                      &kp C_VOL_UP  &kp  RSHFT    &kp  RCTRL    &kp  LALT     &kp  RGUI     &trans
-&trans        &kp  PIPE     &kp  UNDER    &kp  PLUS     &kp  LBRC     &kp  RBRC     &kp  C_PP                                          &kp C_MUTE    &kp C_VOL_DN  &kp  N0       &kp  N1       &kp  N2       &none         &trans
+&kp  INS      &kp  LS(N1)   &kp  RA(Q)    &kp  RA(N3)   &kp  LS(N4)   &kp  LS(N5)                                                                    &kp  GRAVE    &kp  LS(N6)   &kp  LS(RBKT) &kp  LS(N8)   &kp  LS(N9)   &kp  DEL
+&caps_word    &kp  RA(MINUS)&kp  SLASH    &kp  LS(N0)   &kp  RA(N8)   &kp  RA(N9)                                                                    &kp C_VOL_UP  &kp  RSHFT    &kp  RCTRL    &kp  LALT     &kp  RGUI     &trans
+&trans        &kp  LS(RA(MINUS)) &kp  LS(SLASH)&kp  RBKT     &kp  RA(N7)   &kp  RA(N0)   &kp  C_PP                                          &kp C_MUTE    &kp C_VOL_DN  &kp  N0       &kp  N1       &kp  N2       &none         &trans
 &none         &none         &trans                      &trans        &trans        &trans        &mo  ADJ_L               &trans      &trans        &trans        &trans                      &kp  RCTRL    &kp  K_APP    &sk  RALT
                         >;
 			
@@ -83,8 +99,8 @@
  * -------------------------------------------------------------------------------------------------------------------------------------
  * |       | QWERTY|       |       |       |       |-----------------------------------|       |Prt Scr|       | EP_OFF| EP_ON |       |
  * |       | BT 0  | BT 1  | BT 2  | BT 3  | BT 4  |-----------------------------------|       |       |       |       |       |       |
- * | BOOTL | RESET |       |OUT_USB|OUT_BLE|       |BT CLR |-------------------|       |       |       |       |       |       | SHIFT |
- * ----------------|       |-------|       |       |       |       |---|       |       |       |       |-------| CTRL  |----------------
+ * | BOOTL | RESET | NONE  |OUT_USB|OUT_BLE| NONE  |BT CLR |-------------------| NONE  | NONE  | NONE  | NONE  | NONE  | NONE  | TRNS  |
+ * | NONE  | NONE  | TRNS  |-------| TRNS  | TRNS  | TRNS  | TRNS  |---| TRNS  | TRNS  | TRNS  | TRNS  |-------| RCTRL | NONE  | NONE  |
  */
                         bindings = <
 &none         &to  QWERTY_L &none         &none         &none         &none                                                                             &none             &kp PRINTSCREEN    &none         &ext_power EP_OFF  &ext_power EP_ON &none
