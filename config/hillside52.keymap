@@ -69,13 +69,6 @@
                         bindings = <&kp>, <&kp>;
                 };
 
-                btick_lit: btick_lit {
-                        compatible = "zmk,behavior-macro";
-                        #binding-cells = <0>;
-                        // On macOS German/Austrian, RA(GRAVE) is typically the dead-grave source.
-                        // Result is a literal backtick emitted immediately.
-                        bindings = <&kp RA(GRAVE) &kp SPACE &kp BSPC>;
-                };
         };
 
         keymap {
@@ -125,7 +118,7 @@
  */
                         bindings = <
 &trans        &kp  LS(N2)   &kp  LS(BSLH) &kp  BSLH     &kp  LS(N8)   &kp  LS(N9)                                                                         &kp  LS(N6)   &kp  NUBS     &kp  LS(RBKT) &kp  LS(N4)   &kp  LS(N5)   &kp  MINUS
-&trans        &kp  LS(MINUS)&kp  LS(N1)   &kp  RA(L)    &kp  RA(N5)   &kp  RA(N6)                                                                         &btick_lit    &kp  RBKT     &kp  SLASH    &kp  LS(N0)   &kp  LS(COMMA)&trans
+&trans        &kp  LS(MINUS)&kp  LS(N1)   &kp  RA(L)    &kp  RA(N5)   &kp  RA(N6)                                                                         &kp  F13      &kp  RBKT     &kp  SLASH    &kp  LS(N0)   &kp  LS(COMMA)&trans
 &trans        &kp  RA(N7)   &kp  LS(N7)   &kp  LS(RA(N7))&kp  RA(N8)   &kp  RA(N9)   &kp  LS(DOT)                                       &kp  RA(N)    &kp  GRAVE    &kp  LS(GRAVE)&kp  LS(SLASH)&kp  COMMA    &none         &trans
 &tog  NAV_L   &tog  SYM_L        &trans                      &trans        &trans        &trans        &mo  ADJ_L               &trans      &trans        &trans        &trans                      &kp  RCTRL    &kp  K_APP    &sk  RALT
                         >;
