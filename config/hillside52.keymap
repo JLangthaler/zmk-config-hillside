@@ -72,9 +72,9 @@
                 btick_lit: btick_lit {
                         compatible = "zmk,behavior-macro";
                         #binding-cells = <0>;
-                        // On macOS German/Austrian, RA(NUBS) is the dead-grave source.
+                        // On macOS German/Austrian, RA(GRAVE) is typically the dead-grave source.
                         // Result is a literal backtick emitted immediately.
-                        bindings = <&kp RA(NUBS) &kp SPACE &kp BSPC>;
+                        bindings = <&kp RA(GRAVE) &kp SPACE &kp BSPC>;
                 };
         };
 
