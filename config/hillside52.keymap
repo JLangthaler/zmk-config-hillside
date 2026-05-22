@@ -72,9 +72,9 @@
                 btick_lit: btick_lit {
                         compatible = "zmk,behavior-macro";
                         #binding-cells = <0>;
-                        // On German/Austrian layouts GRAVE is dead; append SPACE then delete it.
+                        // On macOS German/Austrian, RA(NUBS) is the dead-grave source.
                         // Result is a literal backtick emitted immediately.
-                        bindings = <&kp GRAVE &kp SPACE &kp BSPC>;
+                        bindings = <&kp RA(NUBS) &kp SPACE &kp BSPC>;
                 };
         };
 
@@ -124,9 +124,9 @@
  * |NAV/TOG|SYM/TOG| TRNS  |-------| TRNS  | TRNS  | TRNS  | TRNS  |----| TRNS | TRNS  | TRNS  | TRNS  |-------| TRNS  | TRNS  | TRNS |
  */
                         bindings = <
-&trans        &kp  LS(N1)   &kp  RA(Q)    &kp  RA(N3)   &kp  LS(N8)   &kp  LS(N9)                                                                         &kp  GRAVE    &kp  LS(N6)   &kp  LS(RBKT) &kp  LS(N4)   &kp  LS(N5)   &kp  MINUS
-&trans        &kp  RA(MINUS)&kp  SLASH    &kp  LS(N0)   &kp  RA(N8)   &kp  RA(N9)                                                                         &btick_lit    &kp  RBKT     &kp  MINUS    &kp  LS(N0)   &kp  LS(COMMA)&trans
-&trans        &kp  LS(RA(MINUS)) &kp  LS(SLASH)&kp  RBKT     &kp  RA(N7)   &kp  RA(N0)   &kp  LS(DOT)                                       &kp  RA(RBKT) &kp  NUBS     &kp  LS(NUBS) &kp  LS(MINUS)&kp  COMMA    &none         &trans
+&trans        &kp  LS(N2)   &kp  LS(BSLH) &kp  BSLH     &kp  LS(N8)   &kp  LS(N9)                                                                         &kp  LS(N6)   &kp  NUBS     &kp  LS(RBKT) &kp  LS(N4)   &kp  LS(N5)   &kp  MINUS
+&trans        &kp  LS(MINUS)&kp  LS(N1)   &kp  RA(L)    &kp  RA(N5)   &kp  RA(N6)                                                                         &btick_lit    &kp  RBKT     &kp  SLASH    &kp  LS(N0)   &kp  LS(COMMA)&trans
+&trans        &kp  RA(N7)   &kp  LS(N7)   &kp  LS(RA(N7))&kp  RA(N8)   &kp  RA(N9)   &kp  LS(DOT)                                       &kp  RA(N)    &kp  GRAVE    &kp  LS(GRAVE)&kp  LS(SLASH)&kp  COMMA    &none         &trans
 &tog  NAV_L   &tog  SYM_L        &trans                      &trans        &trans        &trans        &mo  ADJ_L               &trans      &trans        &trans        &trans                      &kp  RCTRL    &kp  K_APP    &sk  RALT
                         >;
 			
